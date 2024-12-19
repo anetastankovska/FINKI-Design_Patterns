@@ -1,5 +1,7 @@
-﻿using source.Models.Models;
+﻿using source.Models.Interfaces;
+using source.Models.Models;
 using source.Services;
+using source.Util;
 
 var packageManager = new PackageManager();
 var serviceFactory = new ServiceFactory();
@@ -32,7 +34,7 @@ packageManager.RegisterPackage("Premium", premiumPackage);
 // App entry point
 Console.WriteLine("Please select a Package");
 var packages = packageManager.ListPackageNames();
-var choice = int.Parse(Console.ReadLine());
+var choice = InputValidator.GetValidChoice("Please select a Package", 0, packages.Count - 1);
 var chosenPackage = packageManager.CreatePackage(packages[choice]);
 Console.WriteLine($"You have chosen the {chosenPackage.Name} package, which includes the following services:");
 Console.WriteLine(chosenPackage);

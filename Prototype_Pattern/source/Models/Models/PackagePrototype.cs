@@ -22,11 +22,7 @@ namespace source.Models.Models
         {
             PackagePrototype clone = (PackagePrototype)this.MemberwiseClone();
             clone.Id = Guid.NewGuid();
-            clone.Services = new List<IService>();
-            foreach (var service in Services)
-            {
-                clone.Services.Add((IService)service.Clone());
-            }
+            clone.Services = Services.Select(service => (IService)service.Clone()).ToList();
             return clone;
         }
 
