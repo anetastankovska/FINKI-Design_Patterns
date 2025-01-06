@@ -6,17 +6,19 @@ This project demonstrates the **Observer and Strategy Design Patterns** in C# us
 ---
 
 ## Features
-- **Observer and Strategy Pattern Implementation**:
-  - Cloning service and package objects.
-  - Preserving and customizing service attributes.
-- **Customizable Packages**:
-  - Allows users to select predefined packages.
-  - Supports adding or replacing services dynamically.
-  - Displays updated package details after each customization.
-- **Input Validation**:
-  - Includes helper methods to validate user input for choices and yes/no prompts.
-- **Dynamic Service Options**:
-  - Services are dynamically added, replaced, and removed from available options.
+- **Observer Pattern Implementation**:
+  - Registers as subjects that can be observed.
+  - Dynamic addition and removal of observers.
+- **Strategy Pattern Implementation**
+  - Different mathematical operations (addition, subtraction, multiplication, division) as strategies.
+- **Register Management**:
+  - Multiple registers can be created and managed.
+  - Each register can have multiple observers.
+- **Dynamic Observer Customization**:
+  - Observers can be added or removed at runtime.
+  - Each observer can have a unique operation and operand.
+- **Automatic Updates**:
+  - Observers are automatically notified and updated when register values change.
 
 ---
 
