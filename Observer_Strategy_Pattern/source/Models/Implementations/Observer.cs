@@ -4,28 +4,28 @@ namespace source.Models.Implementations
 {
     public class Observer : IObserver
     {
-        private IOperation operation;
-        private decimal operand;
-        private decimal lastResult;
+        private IOperation Operation;
+        private decimal Operand;
+        private decimal LastResult;
 
         public Observer(IOperation operation, decimal operand)
         {
-            this.operation = operation;
-            this.operand = operand;
+            this.Operation = operation;
+            this.Operand = operand;
         }
 
         public void Update(Subject subject)
         {
             if (subject is Register register)
             {
-                decimal result = operation.Execute(register.Value, operand);
+                decimal result = Operation.Execute(register.Value, Operand);
                 Console.WriteLine($"Observer: New value is {result}");
             }
         }
 
         public decimal GetLastResult()
         {
-            return lastResult;
+            return LastResult;
         }
     }
 }

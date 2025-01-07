@@ -26,14 +26,16 @@ This project demonstrates the **Observer and Strategy Design Patterns** in C# us
 
 ```
 source/
-├── bin/                # Compiled binary files
-├── Models/             # Contains abstract and concrete models
-│   ├── Interfaces/     # Service and cloning interfaces
-│   └── Models/         # Package and service prototypes
-├── obj/                # Intermediate object files
-├── Services/           # Service prototypes (voice, SMS, data, roaming)
-├── Util/               # Utility classes (e.g., InputValidator)
-└── Program.cs          # Main program entry point
+├── bin/                 # Compiled binary files
+├── Models/              # Contains abstract and concrete models
+│   ├── Interfaces/      # Service and cloning interfaces
+│   └── Implementations/ # Package and service prototypes
+├── obj/                 # Intermediate object files
+├── Services/            # Service prototypes (voice, SMS, data, roaming)
+│   ├── Observers/       # Service and cloning interfaces
+│   └── Operations/      # Package and service prototypes
+├── Util/                # Utility classes (e.g., InputValidator)
+└── Program.cs           # Main program entry point
 ```
 
 ---

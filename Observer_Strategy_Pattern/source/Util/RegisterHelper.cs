@@ -1,11 +1,6 @@
 ﻿using source.Models.Implementations;
 using source.Models.Interfaces;
 using source.Services.Operations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace source.Util
 {
@@ -44,7 +39,7 @@ namespace source.Util
                 '-' => new SubtractOperation(),
                 '*' => new MultiplyOperation(),
                 '/' => new DivideOperation(),
-                _ => throw new ArgumentException("Invalid operation")
+                _ => throw new ArgumentException("Invalid Operation")
             };
 
             register.Attach(new Observer(op, operand));
@@ -73,7 +68,7 @@ namespace source.Util
 
                     Console.WriteLine($"Observer #{observerIndex} removed.");
 
-                    // Display remaining observers
+                    // Display remaining Observers
                     DisplayRemainingObservers(regA, regB);
                 }
                 else

@@ -17,7 +17,7 @@ namespace source.Models.Implementations
 
         public List<IObserver> GetObservers()
         {
-            return new List<IObserver>(observers);
+            return new List<IObserver>(Observers);
         }
     }
 }
