@@ -27,14 +27,13 @@ This project demonstrates the **Observer and Strategy Design Patterns** in C# us
 ```
 source/
 ├── bin/                 # Compiled binary files
-├── Models/              # Contains abstract and concrete models
+├── Models/              # Contains abstract models
 │   ├── Interfaces/      # Service and cloning interfaces
-│   └── Implementations/ # Package and service prototypes
+│   └── Implementations/ # Contains concrete implementations
 ├── obj/                 # Intermediate object files
-├── Services/            # Service prototypes (voice, SMS, data, roaming)
-│   ├── Observers/       # Service and cloning interfaces
-│   └── Operations/      # Package and service prototypes
-├── Util/                # Utility classes (e.g., InputValidator)
+├── Services/            # Service classes
+│   └── Operations/      # Contains operation classes (add, subtract, multiply, divide)
+├── Util/                # Utility classes
 └── Program.cs           # Main program entry point
 ```
 
@@ -44,38 +43,64 @@ source/
 
 ### Core Classes
 
-#### **BaseEntity**
-- Abstract base class for all entities.
+#### **Subject**
+- Abstract implementation of the subject.
 - Properties:
-  - `Id`: Unique identifier for the entity.
-  - `Name`: Name of the entity.
-  - `Price`: Price associated with the entity.
-
-#### **PackagePrototype**
-- Represents a customizable package.
-- Implements `ICloneable` for cloning.
-- Properties:
-  - `Price`: Calculated sum of all included service prices.
-  - `Services`: List of services included in the package.
+  - `Observers`: List that contains all the observers.
 - Methods:
-  - `Clone()`: Creates a copy of the package.
-  - `AddService(IService)`: Adds a service to the package.
-  - `CustomizeService(List<IService>)`: Allows dynamic customization of the package.
-  - `ConfigureService(string, Dictionary<string, object>)`: Updates service configuration.
+  - `Attach()`: Adds new observer.
+  - `Detach()`: Removes new observer.
+  - `Notify()`: Updates the observer with the latest value in case the value changes
+
+#### **Observer**
+- Concrete implementation of the IObserver interface.
+- Properties:
+  - `Operation`: The operation.
+  - `Operand`: The operand.
+  - `LastValue`: The last emitted value.
+
+#### **Register**
+- Concrete implementation of the Subject class.
+- Properties:
+  - `Value`: The emitted value.
+- Methods:
+  - `GetObservers()`: Returns all the observers.
 
 #### **InputValidator**
 - Utility class for input validation.
 - Methods:
   - `GetYesOrNoInput(string)`: Validates yes/no input.
   - `GetValidChoice(string, int, int)`: Validates numeric choices within a range.
+  - `ValidateNumber(string)`: Validates user input that should be parsed into a decimal value.
 
-#### **Service Prototypes**
-- Concrete implementations for different services:
-  - `VoiceServicePrototype`
-  - `SMSServicePrototype`
-  - `DataServicePrototype`
-  - `RoamingServicePrototype`
-- All services implement the `IService` interface.
+#### **RegisterHelper**
+- Utility class for input validation.
+- Methods:
+  - `SetRegisterValue(Register, string)`: Sets the value of the register.
+  - `AddObserver(Register, Register)`: Adds new observer.
+  - `RemoveObserver(Register, Register)`: Removes existing observer.
+  - `DisplayRemainingObservers(Register, Register)`: Displays remaining observers.
+
+#### **AddOperation**
+- Class responsible for executing sum operations:
+- Methods:
+  - `Execute(decimal)`: Execute sum operation.
+
+#### **SubtractOperation**
+- Class responsible for executing subtraction operations:
+- Methods:
+  - `Execute(decimal)`: Execute subtraction operation.
+
+#### **MultiplyOperation**
+- Class responsible for executing multiplication operations:
+- Methods:
+  - `Execute(decimal)`: Execute multiplication operation.
+
+#### **DivideOperation**
+- Class responsible for executing division operations:
+- Methods:
+  - `Execute(decimal)`: Execute division operation.
+
 
 ---
 
@@ -108,39 +133,36 @@ source/
    ```bash
    dotnet run
    ```
-2. Follow the on-screen instructions to select and customize packages.
+2. Follow the on-screen instructions.
 
 ---
 
 ## Example Usage
+### Adding observer that adds 1 to Register A
+> +
+>> Set New Observer (A|B) (+|-|*|/) <num>): a+1
+< observer #0 is 11
 
-1. **Select a Package**:
-   ```
-   Please select a Package
-   0: Standard
-   1: Optimum
-   2: Premium
-   ```
+### Adding observer that subtracts 0.5 from Register A
+> +
+>> Set New Observer (A|B) (+|-|*|/) <num>): a-0.5
+< observer #0 is 11
+< observer #1 is 9.5
 
-2. **Customize Services**:
-   ```
-   Would you like to customize your package? (y/n)
-   y
-   Which service would you like to add or replace?
-   0: None | 1: Optimum Voice | 2: Premium Voice | ...
-   ```
+### Setting value in Register A
+> a
+>> value=1.23
+< observer #0 is 2.23
+< observer #1 is 0.73
 
-3. **View Updated Package**:
-   ```
-   Updated package details:
-   --- Standard + Optimum Data ---
-   Standard Voice:
-     MinutesIncluded: 300
-     Price: 300
-   Optimum Data:
-     DataLimitGB: 30
-     Price: 300
-   *** Total Package Price: 800
-   ```
+### Removing observer #1
+> -
+>> Remove Observer (#): 1
+< observer #0 is 2.23
 
+The observer format is: [register][operation][number] where:
+- register: a or b
+- operation: +, -, *, or /
+- number: decimal value3
+Each observer performs its mathematical operation on the register's value whenever it changes, and displays the result automatically.
 

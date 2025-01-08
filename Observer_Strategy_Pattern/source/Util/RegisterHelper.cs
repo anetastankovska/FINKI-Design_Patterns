@@ -6,17 +6,11 @@ namespace source.Util
 {
     public static class RegisterHelper
     {
+
         public static void SetRegisterValue(Register register, string name)
         {
-            Console.Write($">> value for Register {name}=");
-            if (decimal.TryParse(Console.ReadLine(), out decimal value))
-            {
-                register.Value = value;
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter a decimal value.");
-            }
+            decimal value = InputValidator.ValidateNumber(">> value=");
+            register.Value = value;
         }
 
         public static void AddObserver(Register regA, Register regB)

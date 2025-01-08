@@ -30,19 +30,20 @@
             }
         }
 
-        public static float ValidateNumber(string promptMessage)
+        public static decimal ValidateNumber(string promptMessage)
         {
             while (true)
             {
                 Console.WriteLine(promptMessage);
                 var input = Console.ReadLine();
-                if (float.TryParse(input, out var choice))
+                if (decimal.TryParse(input, out var number))
                 {
-                    return choice;
+                    return number;
                 }
-                Console.WriteLine("Invalid input. Must be a valid number (float).");
+                Console.WriteLine("Invalid input. Must be a valid decimal number.");
             }
         }
+
 
     }
 }

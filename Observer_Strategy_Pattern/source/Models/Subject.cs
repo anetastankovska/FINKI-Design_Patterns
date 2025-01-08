@@ -1,6 +1,11 @@
 ﻿using source.Models.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace source.Models.Implementations
+namespace source.Models
 {
     public abstract class Subject
     {

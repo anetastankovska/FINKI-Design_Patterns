@@ -4,11 +4,11 @@ namespace source.Models.Implementations
 {
     public class Register : Subject
     {
-        private decimal value;
-        public decimal Value
+        private decimal value; // Backing field - stores the actual data
+        public decimal Value   // Property - provides controlled access
         {
-            get => value;
-            set
+            get => value;  // Returns the backing field value
+            set  // Sets the backing field value and notifies observers
             {
                 this.value = value;
                 Notify();
