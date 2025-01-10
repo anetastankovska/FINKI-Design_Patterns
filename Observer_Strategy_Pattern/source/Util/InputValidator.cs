@@ -43,8 +43,6 @@
                 Console.WriteLine("Invalid input. Must be a valid decimal number.");
             }
         }
-
-
     }
 }
 

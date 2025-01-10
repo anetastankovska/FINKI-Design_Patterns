@@ -1,7 +1,15 @@
-# Project: Design Patterns - Observer and Strategy Pattern
+# Project: Design Patterns - Structural Patterns
 
 ## Overview
-This project demonstrates the **Observer and Strategy Design Patterns** in C# using a practical example of keeping a value inside a registers and updating that value based on the operators and the operation called.
+This project demonstrates the **Structural Patterns** in C# using a practical example of sending postcards to one or multiple receivers with different content.
+After investigating the most commonly used structural design patterns, I decided to use the Decorator Pattern for this homework. The Decorator pattern allows the user to dynamically add functionalities to objects at runtime.
+
+Some of the main reasons I decided to use the Decorator Pattern are:
+1. Flexible Customization: The basic greeting card contains predefined text. Users need the ability to add extra content, such as text and images, without altering the base class.
+2. Open-Closed Principle: It adheres to the open-closed principle, allowing me to extend the functionality of the greeting card without modifying its existing code. So, I can start with a basic greeting card and then "decorate" it with additional features like text or images.
+3. Composition Over Inheritance: Instead of creating multiple subclasses for different types of greeting cards, I can use composition to add features, making the system more flexible and easier to maintain.
+4. Modular Design: It keeps the core card structure intact while enabling additional functionalities like adding content or sending the card to multiple recipients.
+5. Reusability: Each "decoration" (e.g., adding images or modifying text) is implemented as a separate class, promoting code reusability and separation of concerns.
 
 ---
 

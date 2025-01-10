@@ -6,7 +6,6 @@ namespace source.Util
 {
     public static class RegisterHelper
     {
-
         public static void SetRegisterValue(Register register, string name)
         {
             decimal value = InputValidator.ValidateNumber(">> value=");
@@ -36,7 +35,7 @@ namespace source.Util
                 _ => throw new ArgumentException("Invalid Operation")
             };
 
-            register.Attach(new Observer(op, operand));
+            register.Attach(new Observer(op, operand, Register.RegisteredObservers));
         }
 
         public static void RemoveObserver(Register regA, Register regB)
@@ -48,22 +47,13 @@ namespace source.Util
                 allObservers.AddRange(regA.GetObservers());
                 allObservers.AddRange(regB.GetObservers());
 
-                if (observerIndex >= 0 && observerIndex < allObservers.Count)
+                if (regA.Observers.Any(x => x.ID == observerIndex))
                 {
-                    IObserver observerToRemove = allObservers[observerIndex];
-                    if (regA.GetObservers().Contains(observerToRemove))
-                    {
-                        regA.Detach(observerToRemove);
-                    }
-                    else if (regB.GetObservers().Contains(observerToRemove))
-                    {
-                        regB.Detach(observerToRemove);
-                    }
-
-                    Console.WriteLine($"Observer #{observerIndex} removed.");
-
-                    // Display remaining Observers
-                    DisplayRemainingObservers(regA, regB);
+                    regA.Detach(regA.Observers.First(x => x.ID == observerIndex));
+                }
+                else if (regB.Observers.Any(y => y.ID == observerIndex))
+                {
+                    regB.Detach(regB.Observers.First(y => y.ID == observerIndex));
                 }
                 else
                 {
@@ -88,11 +78,10 @@ namespace source.Util
                 if (observer != null)
                 {
                     decimal result = observer.GetLastResult();
-                    Console.WriteLine($"< observer #{i} is {result}");
+                    Console.WriteLine($"< observer #{observer.ID} is {result}");
                 }
             }
         }
 
     }
-
 }

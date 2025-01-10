@@ -1,9 +1,4 @@
 ﻿using source.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace source.Models
 {
@@ -11,8 +6,21 @@ namespace source.Models
     {
         public List<IObserver> Observers = new List<IObserver>();
 
-        public void Attach(IObserver observer) => Observers.Add(observer);
-        public void Detach(IObserver observer) => Observers.Remove(observer);
+        public static int RegisteredObservers = 0;
+
+        public void Attach(IObserver observer)
+        {
+            Observers.Add(observer);
+            Notify();
+            RegisteredObservers++;
+        }
+
+        public void Detach(IObserver observer)
+        {
+            Observers.Remove(observer);
+            Notify();
+        }
+
         protected void Notify() => Observers.ForEach(o => o.Update(this));
     }
 }

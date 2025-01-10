@@ -1,7 +1,7 @@
 # Project: Design Patterns - Prototype Pattern
 
 ## Overview
-This project demonstrates the **Prototype Design Pattern** in C# using a practical example of package customization for services like voice, SMS, data, and roaming. The pattern allows cloning existing objects to create new instances while maintaining the ability to modify them independently.
+This project demonstrates the **Prototype Design Pattern** in C# using a practical example of keeping a value in specific registers and updating that value based on the operator and the operation.
 
 ---
 

@@ -7,11 +7,14 @@ namespace source.Models.Implementations
         private IOperation Operation;
         private decimal Operand;
         private decimal LastResult;
+        public int ID { get; }
 
-        public Observer(IOperation operation, decimal operand)
+        public Observer(IOperation operation, decimal operand, int iD)
         {
-            this.Operation = operation;
-            this.Operand = operand;
+            Operation = operation;
+            Operand = operand;
+            ID = iD;
+
         }
 
         public void Update(Subject subject)
@@ -19,7 +22,7 @@ namespace source.Models.Implementations
             if (subject is Register register)
             {
                 decimal result = Operation.Execute(register.Value, Operand);
-                Console.WriteLine($"Observer: New value is {result}");
+                Console.WriteLine($"Observer #{ID}: New value is {result}");
             }
         }
 
