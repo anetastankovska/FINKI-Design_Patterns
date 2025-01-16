@@ -1,0 +1,15 @@
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\bin\Debug\net8.0\source.exe
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\bin\Debug\net8.0\source.deps.json
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\bin\Debug\net8.0\source.runtimeconfig.json
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\bin\Debug\net8.0\source.dll
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\bin\Debug\net8.0\source.pdb
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.AssemblyInfoInputs.cache
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.AssemblyInfo.cs
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.csproj.CoreCompileInputs.cache
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.sourcelink.json
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.dll
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\refint\source.dll
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.pdb
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\source.genruntimeconfig.cache
+C:\Users\aneta\Personal\Master\DesignPatterns\FINKI-Design_Patterns\Structural_Patterns\source\obj\Debug\net8.0\ref\source.dll
