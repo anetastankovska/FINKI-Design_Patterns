@@ -8,12 +8,15 @@ namespace source.Models.Decorators
 
         public ImageDecorator(IGreetingCard card, string imageUrl) : base(card)
         {
+            Body = card.Body;
+            Title = card.Title;
             _imageUrl = imageUrl;
+            Presentation($"[{imageUrl}]");
         }
 
         public override string Render()
         {
-            return $"{base.Render()}\n[Image: {_imageUrl}]";
+            return base.Render();
         }
     }
 

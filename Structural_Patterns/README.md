@@ -60,7 +60,9 @@ source/
   - `Title`: Title of the greeting card.
   - `Body`: Content of the greeting card.
   - `Recipients`: List of recipients for the card.
+  - `CardLines`: Basic line decoration for the card.
 - Methods:
+  - `Presentation': Visual presentation of the card.
   - `Render()`: Renders the card content.
   - `AddRecipient(Recipient recipient)`: Adds a recipient to the card.
 
@@ -98,22 +100,29 @@ source/
 
 #### **TextDecorator**
 - Adds custom text to the greeting card.
+- Properties:
+  - `_additionalText` - Additional text of the card.
 - Methods:
   - `Render()`: Appends the additional text to the card content.
 
 #### **ImageDecorator**
 - Adds an image to the greeting card.
+- Properties:
+  - `_imageUrl` - Url of the card image.
 - Methods:
   - `Render()`: Appends an image URL to the card content.
 
 #### **AnimationDecorator**
 - Adds an animation to the greeting card.
+- Properties:
+  - `_animationUrl` - Url of the card image.
 - Methods:
   - `Render()`: Appends an animation URL to the card content.
 
 #### **GreetingCardService**
 - Manages sending greeting cards to recipients.
 - Methods:
+  - `Start() - Mehod for bulding the greeting card.
   - `SendGreetingCard(IGreetingCard card, List<Recipient> recipients)`: Sends the card to all specified recipients.
 
 ---
@@ -151,24 +160,74 @@ source/
 
 ---
 
-## Example Usage - Creating and Sending a Greeting Card
-### Create a basic greeting card
-- var card = new BasicGreetingCard("Happy Birthday", "Wishing you a wonderful day!");
+## Example Usage
 
-### Add a recipient
-- card.AddRecipient(new Recipient("John", "Doe", "123 Main St", "Springfield", "12345", "USA"));
+### Step 1: Prompt for Creating a Greeting Card
+- Console displays:
+  ```
+  Would you like to create a Card (Y)es/(N)o:
+  ```
+- Enter `Y` to start creating a greeting card or `N` to exit.
 
-### Decorate the card
-- var decoratedCard = new TextDecorator(card, "Hope you enjoy your special day!");
-- decoratedCard = new ImageDecorator(decoratedCard, "https://example.com/birthday.jpg");
+### Step 2: Creating the Greeting Card
+- Console prompts:
+  ```
+  Please enter your Card Title:
+  ```
+- Enter a title, for example:
+  ```
+  Happy Birthday
+  ```
+- Next prompt:
+  ```
+  Please enter your Card Message:
+  ```
+- Enter a message, for example:
+  ```
+  Wishing you lots of happiness and success!
+  ```
 
-### Send the card
-- var service = new GreetingCardService();
-- service.SendGreetingCard(decoratedCard, card.Recipients);
+### Step 3: Adding Text, Image, or Nothing
+- Console prompts:
+  ```
+  Would you like to add (T)ext, (I)mage or (N)othing:
+  ```
+- If `T` is entered:
+  ```
+  Please type/paste the additional message:
+  ```
+  Enter, for example:
+  ```
+  Enjoy your day!
+  ```
+- If `I` is entered:
+  ```
+  Please type/paste the URL to the image:
+  ```
+  Enter a URL, for example:
+  ```
+  https://example.com/birthday.jpg
+  ```
+
+### Step 4: Adding Recipients or Sending the Card
+- Console prompts:
+  ```
+  Would you like to add (C)heck Card, (A)dd Recipient, (S)end Card or (Q)uit:
+  ```
+- If `A` is entered, fill in recipient details:
+  ```
+  First Name: Ana
+  Last Name: Petrova
+  Street: Macedonia Street
+  Street Number: 12
+  City: Skopje
+  Zip Code: 1000
+  Country: Macedonia
+  ```
+- If `C` is entered, the rendered card will be displayed.
+- If `S` is entered, the card will be sent to all recipients.
+
+### Step 5: Ending the Process
+- Enter `Q` to exit the application.
 
 
-Sending to John Doe, 123 Main St, Springfield, 12345, USA:
-Happy Birthday
-Wishing you a wonderful day!
-Hope you enjoy your special day!
-[Image: https://example.com/birthday.jpg]

@@ -1,9 +1,7 @@
 ﻿using source.Models.Interfaces;
-using System;
-using System.Collections.Generic;
 namespace source.Models.Decorators
 {
-    internal class AnimationDecorator : GreetingCardDecorator
+    public class AnimationDecorator : GreetingCardDecorator
     {
         private string _animationUrl;
 
