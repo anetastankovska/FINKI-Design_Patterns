@@ -1,5 +1,4 @@
-﻿using System;
-using source.Commands;
+﻿using source.Commands;
 using source.Commands.TrigCommands;
 using source.Managers;
 
