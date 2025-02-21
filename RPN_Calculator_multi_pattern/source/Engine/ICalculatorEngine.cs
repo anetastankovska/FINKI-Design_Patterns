@@ -7,8 +7,7 @@
         /// <param name="input">A string of tokens (e.g., "5 6 +").</param>
         void ProcessInput(string input);
 
-        // Gets the current contents of the stack for display.
-        /// <returns>A read-only list of decimals representing the stack.</returns>
-        IReadOnlyList<decimal> GetStackItems(int count);
+        //Display the stack.
+        public void DisplayStack();
     }
 }

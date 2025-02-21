@@ -9,7 +9,7 @@ namespace source
 {
     /// Facade class managing the stack, registers, and token processing.
     /// Implements ICalculatorEngine for decoupling the UI from the core logic.
-    public class Calculator : ICalculatorEngine
+    public class Calculator
     {
         // Expose the command manager and program recorder for commands to use.
         public CommandManager CommandManager { get; } = new CommandManager();
@@ -92,6 +92,13 @@ namespace source
         // Process a single token from user input.
         public void ProcessToken(string token)
         {
+            if (token.Equals("CHMOD", StringComparison.OrdinalIgnoreCase))
+            {
+                var currentMode = ToggleCalculatorMode();
+                Console.WriteLine($"You changed the mode. The current mode is: {currentMode}");
+                return;
+            }
+         
             // Check if we are recording a program.
             if (ProgramRecorder.IsRecording)
             {
@@ -182,46 +189,7 @@ namespace source
         #endregion
 
         #region ICalculatorEngine Implementation
-
-        /// Processes a line of input containing one or more tokens.
-        /// Splits the input and delegates token processing.
-        /// <param name="input">The user input (e.g., "5 6 +").</param>
-        public void ProcessInput(string input)
-        {
-            if (string.IsNullOrWhiteSpace(input))
-                return;
-
-            // Split input by whitespace.
-            string[] tokens = input.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var token in tokens)
-            {
-                ProcessToken(token);
-            }
-        }
-
-        /// Returns the current stack items for display.
-        /// <returns>A read-only list of decimal values representing the stack.</returns>
-        public IReadOnlyList<decimal> GetStackItems(int count = 4)
-        {
-            // Get the full stack as a read-only list.
-            var stackContents = StackItems; // This is _stack.AsReadOnly()
-            int stackCount = stackContents.Count;
-
-            // If the stack is empty, return an empty array.
-            if (stackCount == 0)
-                return Array.Empty<decimal>();
-
-            // Calculate the starting index so that we return only the top 'count' items.
-            int start = Math.Max(0, stackCount - count);
-
-            // Return the selected items in the correct order (top first).
-            return stackContents
-                .Skip(start)
-                .Take(stackCount - start)
-                .Reverse()
-                .ToArray();
-        }
-
+             
         public IReadOnlyList<decimal> GetStackContents()
         {
             // _stack is your private List<decimal>.
@@ -230,5 +198,17 @@ namespace source
         }
 
         #endregion
+
+        public string ToggleCalculatorMode()
+        {
+            if (Mode is DefaultMode defaultMode)
+            {
+                Mode = new TrigMode();
+                return "Trigonometric mode";
+            }
+
+            Mode = new DefaultMode();
+            return "Default mode";
+        }
     }
 }

@@ -28,22 +28,27 @@ namespace source.Engine
             }
         }
 
-        public IReadOnlyList<decimal> GetStackItems(int count = 4)
-        {
-            // Retrieve the calculator’s stack contents.
-            var stackContents = _calculator.GetStackContents();
-            int stackCount = stackContents.Count;
+        //public IReadOnlyList<decimal> GetStackItems(int count = 4)
+        //{
+        //    // Retrieve the calculator’s stack contents.
+        //    var stackContents = _calculator.GetStackContents();
+        //    int stackCount = stackContents.Count;
             
-            if (stackCount == 0)
-                return Array.Empty<decimal>();
+        //    if (stackCount == 0)
+        //        return Array.Empty<decimal>();
 
-            int start = Math.Max(0, stackCount - count);
-            // Skip/Take/Reverse require using System.Linq
-            return stackContents
-                .Skip(start)
-                .Take(stackCount - start)
-                .Reverse()
-                .ToArray();
+        //    int start = Math.Max(0, stackCount - count);
+        //    // Skip/Take/Reverse require using System.Linq
+        //    return stackContents
+        //        .Skip(start)
+        //        .Take(stackCount - start)
+        //        .Reverse()
+        //        .ToArray();
+        //}
+
+        public void DisplayStack()
+        {
+            _calculator.DisplayStack();
         }
     }
 }
