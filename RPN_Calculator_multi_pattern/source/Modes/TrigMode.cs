@@ -48,15 +48,25 @@ namespace source.Modes
             switch (token.ToUpperInvariant())
             {
                 case "SIN":
-                    cmdManager.ExecuteCommand(new TrigSinCommand(), calc);
+                    if (calc.IsInverseMode)
+                        cmdManager.ExecuteCommand(new TrigAsinCommand(), calc);
+                    else
+                        cmdManager.ExecuteCommand(new TrigSinCommand(), calc);
                     break;
                 case "COS":
-                    cmdManager.ExecuteCommand(new TrigCosCommand(), calc);
+                    if (calc.IsInverseMode)
+                        cmdManager.ExecuteCommand(new TrigAcosCommand(), calc);
+                    else
+                        cmdManager.ExecuteCommand(new TrigCosCommand(), calc);
                     break;
                 case "TAN":
-                    cmdManager.ExecuteCommand(new TrigTanCommand(), calc);
+                    if (calc.IsInverseMode)
+                        cmdManager.ExecuteCommand(new TrigAtanCommand(), calc);
+                    else
+                        cmdManager.ExecuteCommand(new TrigTanCommand(), calc);
                     break;
 
+                // Even though inverse tokens are also supported, they may be called directly.
                 case "ASIN":
                     cmdManager.ExecuteCommand(new TrigAsinCommand(), calc);
                     break;
